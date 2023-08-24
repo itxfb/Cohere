@@ -1,0 +1,42 @@
+{
+  "startDay": "2020-03-11T00:00:00.000Z",
+  "endDay": "2022-03-15T00:00:00.000Z",
+  "duration": "custom",
+  "sessionDuration": 60,
+  "selectedWeeks": [
+    {
+      "days": [
+        {
+          "title": "M",
+          "value": "Mon"
+        },
+        {
+          "title": "T",
+          "value": "Tue"
+        },
+        {
+          "title": "W",
+          "value": "Wed"
+        },
+        {
+          "title": "Th",
+          "value": "Thu"
+        },
+        {
+          "title": "F",
+          "value": "Fri"
+        },
+        {
+          "title": "S",
+          "value": "Sat"
+        },
+        {
+          "title": "SS",
+          "value": "Sun"
+        }
+      ],
+      "endTime": "2020-12-04T03:30:00.000Z",
+      "startTime": "2020-12-04T00:30:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "keys": [
+    {
+      "alg": "RS256",
+      "e": "AQAB",
+      "kid": "cohere_key",
+      "kty": "RSA",
+      "n": "AAAAB3NzaC1yc2EAAAADAQABAAABAQC9pMGO/VmuN7RmmrMlU/mrG+CfuhLKUfmiHJBLq4d49MXq3HfO8BxRl54gc+iE9WaaWKDERLEFNlHF1KOXXjUhPZeFAIqzIKU79DGTWkSZ5WKsOhIgC218YCyhUaT2Gn8C1LAzdeNKFBSGPPQAkyE+uSPLz3zCOG2P4hJMJLHiBuGp2WJz0coqqIkPoT4GXnNHA7mdLX41UzmNPyRL92hdmsUef0Nf4cB+Pwuy9wb44bTlHoq596rKq1R7dhD3WHGDlfnK0uzU4dUbSOs3vR6c5e+5hvApSgF67a6rYL39tqbRawrz6moR5dVpKtzuzA/xtc7EptgCaJfC5jSienCx",
+      "use": "sig"
+    }
+  ]
+}

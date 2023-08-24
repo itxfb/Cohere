@@ -1,0 +1,26 @@
+{
+  "MongoSettings": {
+    "DatabaseName": "Cohere",
+    // Object keys MUST be the same as model names from Cohere.Entity.Entity, i.e. nameof(Account) == [CollectionNames:Account]
+    "CollectionNames": {
+      "Account": "Accounts",
+      "User": "Users",
+      "Preference": "Preferences",
+      "Document": "UserDocuments",
+      "SecurityQuestion": "SecurityQuestions",
+      "ContributionBase": "Contributions",
+      "Purchase": "Purchases",
+      "StripeEvent": "StripeEvents",
+      "PeerChat": "PeerChats",
+      "ChatConversation": "ChatConversations",
+      "Agreement": "Agreements",
+      "Note": "Notes",
+      "NylasAccount": "NylasAccounts",
+      "PaidTierOption": "PaidTierOptions",
+      "TimeZone": "TimeZones",
+      "Country": "Countries",
+      "Pod": "Pod",
+      "Testimonial": "Testimonial"
+    }
+  }
+}

@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account with email exists" xml:space="preserve">
+    <value>Account with the following email already exists!</value>
+  </data>
+  <data name="User confirmed" xml:space="preserve">
+    <value>User with the following id and source (email or phone) has been confirmed</value>
+  </data>
+  <data name="Password change required" xml:space="preserve">
+    <value>Sign In failed: password change is required</value>
+  </data>
+  <data name="Password reset required" xml:space="preserve">
+    <value>Sign In failed: password reset is required. Please contact support</value>
+  </data>
+  <data name="Confirm profile" xml:space="preserve">
+    <value>Sign In failed. The user registration is not completed. Please confirm your profile</value>
+  </data>
+  <data name="TFA required" xml:space="preserve">
+    <value>Two Factor authorization required</value>
+  </data>
+  <data name="Account locked" xml:space="preserve">
+    <value>Sign in failed. Please contact us at &lt;support email link&gt;</value>
+  </data>
+  <data name="Unexpected sign in error" xml:space="preserve">
+    <value>Sign in failed. Unexpected sign in error, please try later. If the problem persists contact support</value>
+  </data>
+  <data name="User not found" xml:space="preserve">
+    <value>The user with is not found in the database, id:</value>
+  </data>
+  <data name="Following errors" xml:space="preserve">
+    <value>Following errors occured:</value>
+  </data>
+  <data name="Entity not found" xml:space="preserve">
+    <value>Entity not found</value>
+  </data>
+  <data name="Deleted count" xml:space="preserve">
+    <value>Number of deleted</value>
+  </data>
+  <data name="Not deleted" xml:space="preserve">
+    <value>Error! The the entity hasn't ben deleted. Try again later. Entity type:</value>
+  </data>
+  <data name="Updated count" xml:space="preserve">
+    <value>Number of updated</value>
+  </data>
+  <data name="Not updated" xml:space="preserve">
+    <value>Error! The the entity hasn't ben updated. Try again later. Entity type:</value>
+  </data>
+  <data name="Not deleted in Cognito" xml:space="preserve">
+    <value>Cognito deletion failed. Stopping account deletion from DB. Cognito ID:</value>
+  </data>
+  <data name="User with account Id exists" xml:space="preserve">
+    <value>User with associated Account Id already exist!</value>
+  </data>
+  <data name="EmailHtmlBody" xml:space="preserve">
+    <value>&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Amazon SES Test (AWS SDK for .NET)&lt;/h1&gt;
+  &lt;p&gt;&lt;message&gt;&lt;hr&gt;This email was sent with
+    &lt;a href='https://aws.amazon.com/ses/'&gt;Amazon SES&lt;/a&gt; using the
+    &lt;a href='https://aws.amazon.com/sdk-for-net/'&gt;
+      AWS SDK for .NET&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="Account with email does not exist" xml:space="preserve">
+    <value>Account with the following email doesn't exist!</value>
+  </data>
+  <data name="Password restore email is not confirmed" xml:space="preserve">
+    <value>Error! Can't restore password of account with unconfirmed email.</value>
+  </data>
+  <data name="Password restoration link sent" xml:space="preserve">
+    <value>Password restoration link successfully sent to the following email: '&lt;email&gt;'.</value>
+  </data>
+  <data name="Password restoration link sent failure" xml:space="preserve">
+    <value>Some error occurred during sending password restoration link.</value>
+  </data>
+  <data name="PasswordRestorationMessageTemplate" xml:space="preserve">
+    <value>To restore your account password, please click the following link &lt;link&gt;. If you haven't requested password restoration, just ignore this message.</value>
+  </data>
+  <data name="Expired password restoration token" xml:space="preserve">
+    <value>Password restoration link is expired.</value>
+  </data>
+  <data name="Incorrect email or restoration token" xml:space="preserve">
+    <value>Incorrect requested link.</value>
+  </data>
+  <data name="Password changed" xml:space="preserve">
+    <value>Password for user with email &lt;email&gt; changed.</value>
+  </data>
+  <data name="Password restoration token verified" xml:space="preserve">
+    <value>Password restoration token verified.</value>
+  </data>
+  <data name="AccountEmailConfirmationMessageTemplate" xml:space="preserve">
+    <value>To confirm your account email, please click the following link &lt;link&gt;. If you haven't registered in our service, just ignore this message.</value>
+  </data>
+  <data name="Email confirmed" xml:space="preserve">
+    <value>Email successfully confirmed.</value>
+  </data>
+  <data name="Incorrect email or verification token" xml:space="preserve">
+    <value>Incorrect requested link.</value>
+  </data>
+  <data name="Account does not have security answers" xml:space="preserve">
+    <value>Account does not have security answers.</value>
+  </data>
+  <data name="Correct security answers" xml:space="preserve">
+    <value>Correct security answers.</value>
+  </data>
+  <data name="Incorrect security answers" xml:space="preserve">
+    <value>Incorrect security answers.</value>
+  </data>
+  <data name="Same as old password" xml:space="preserve">
+    <value>New password is the same as old one. Please provide different password</value>
+  </data>
+  <data name="Wrong old password" xml:space="preserve">
+    <value>Unable to change the password. Please check email and current password provided</value>
+  </data>
+  <data name="File is null or empty" xml:space="preserve">
+    <value>File must not be null and size must be greater than 0</value>
+  </data>
+  <data name="Provide image" xml:space="preserve">
+    <value>Please provide image </value>
+  </data>
+  <data name="Contribution id not match" xml:space="preserve">
+    <value>Contribution Id in body doesn't match Id in route parameter</value>
+  </data>
+  <data name="User Id is null" xml:space="preserve">
+    <value>User Id is null</value>
+  </data>
+  <data name="No user for content" xml:space="preserve">
+    <value>Unable to find user information to associate with file being uploaded. Document upload failed</value>
+  </data>
+  <data name="Error during upload" xml:space="preserve">
+    <value>Error occurred during upload</value>
+  </data>
+  <data name="Unknown error" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="Object deleted" xml:space="preserve">
+    <value>Object has been deleted</value>
+  </data>
+  <data name="Error during deleting" xml:space="preserve">
+    <value>Error occurred during deleting</value>
+  </data>
+  <data name="Image URL is null" xml:space="preserve">
+    <value>Image URL is null or empty</value>
+  </data>
+  <data name="Contribution Id is null" xml:space="preserve">
+    <value>Contribution Id is null</value>
+  </data>
+  <data name="Review note model is null" xml:space="preserve">
+    <value>Review note model must not be null</value>
+  </data>
+  <data name="Book 1to1 session time model is null" xml:space="preserve">
+    <value>Book One-To-One session time model must not be null</value>
+  </data>
+  <data name="Book time model is null" xml:space="preserve">
+    <value>Book time view model must not be null</value>
+  </data>
+  <data name="ShareContributionEmail model is null" xml:space="preserve">
+    <value>Share contribution via Email model is null</value>
+  </data>
+  <data name="Contribution model is null" xml:space="preserve">
+    <value>Contribution model is null</value>
+  </data>
+  <data name="Book course time model is null" xml:space="preserve">
+    <value>Select course time model must not be null</value>
+  </data>
+</root>

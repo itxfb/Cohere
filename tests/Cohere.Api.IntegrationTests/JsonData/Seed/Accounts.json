@@ -1,0 +1,81 @@
+
+{
+  "_id": "5f7ddd1c43948a30767fbf8b",
+  "CreateTime": {
+    "$date": "2020-10-07T15:22:04.534Z"
+  },
+  "UpdateTime": {
+    "$date": "2020-10-07T15:22:39.505Z"
+  },
+  "Email": "testadmin@test.com",
+  "EncryptedPassword": "KV/3eTfN0B+8jtpXRmcWU3R9/N+h6W+h2VILvTGx5vQ=",
+  "EncryptionSalt": "Q9GmYEdt0WYVQCy+zQ==",
+  "Roles": [
+    5,
+    3,
+    2
+  ],
+  "VerificationToken": "90123e03-2312-4a6e-a17f-18c18bbd0313",
+  "VerificationTokenExpiration": {
+    "$date": "2020-10-14T15:22:04.534Z"
+  },
+  "PasswordRestorationTokenExpiration": {
+    "$date": "2020-10-07T15:22:04.534Z"
+  },
+  "OnboardingStatus": "InfoAdded",
+  "IsPushNotificationsEnabled": true,
+  "IsEmailNotificationsEnabled": true
+}
+{
+  "_id": "600e87130c23e97effaaa0bc",
+  "CreateTime": {
+    "$date": "2021-01-25T08:53:39.307Z"
+  },
+  "UpdateTime": {
+    "$date": "2021-01-25T08:54:06.919Z"
+  },
+  "Email": "va.leshkevich.andersenlab+api-test@gmail.com",
+  "EncryptedPassword": "vOMyUAnNfFGL1xsPDyspjf4zpTCIZ6WOgJ5NHfE95sc=",
+  "EncryptionSalt": "DsGYSb4r2YjLI9+oEw==",
+  "Roles": [
+    5,
+    3
+  ],
+  "VerificationToken": "f441acea-296d-4754-b5e9-ba0a1b792a8c",
+  "VerificationTokenExpiration": {
+    "$date": "2021-02-01T08:53:39.307Z"
+  },
+  "PasswordRestorationTokenExpiration": {
+    "$date": "2021-01-25T08:53:39.307Z"
+  },
+  "OnboardingStatus": "InfoAdded",
+  "IsPushNotificationsEnabled": true,
+  "IsEmailNotificationsEnabled": true,
+  "IsVideoTestFirstTime": true
+}
+{
+  "_id": "600e87d10c23e97effaaa0e8",
+  "CreateTime": {
+    "$date": "2021-01-25T08:56:49.147Z"
+  },
+  "UpdateTime": {
+    "$date": "2021-01-25T08:57:05.315Z"
+  },
+  "Email": "va.leshkevich.andersenlab+api-test-client@gmail.com",
+  "EncryptedPassword": "2XVTUtOfxxG+BU5Mtmjb3HyzCvtyWzwfeROX3+jzpp0=",
+  "EncryptionSalt": "Qxy9hUW0V4+2KIJtEQ==",
+  "Roles": [
+    5
+  ],
+  "VerificationToken": "dc365d34-fd1f-4b46-b6c9-ceb0da3767ad",
+  "VerificationTokenExpiration": {
+    "$date": "2021-02-01T08:56:49.147Z"
+  },
+  "PasswordRestorationTokenExpiration": {
+    "$date": "2021-01-25T08:56:49.147Z"
+  },
+  "OnboardingStatus": "InfoAdded",
+  "IsPushNotificationsEnabled": true,
+  "IsEmailNotificationsEnabled": true,
+  "IsVideoTestFirstTime": true
+}

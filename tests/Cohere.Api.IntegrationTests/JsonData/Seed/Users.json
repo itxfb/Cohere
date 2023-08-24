@@ -1,0 +1,74 @@
+{
+  "_id": "5f7ddd3f43948a30767fbf91",
+  "CreateTime": {
+    "$date": "2020-10-07T15:22:39.501Z"
+  },
+  "UpdateTime": {
+    "$date": "2020-10-07T15:22:39.501Z"
+  },
+  "AccountId": "5f7ddd1c43948a30767fbf8b",
+  "FirstName": "Vasiliy",
+  "LastName": "Leshkevich",
+  "HasAgreedToTerms": true,
+  "IsCohealer": true,
+  "BirthDate": {
+    "$date": {
+      "$numberLong": "-23890291200000"
+    }
+  },
+  "TimeZoneId": "America/Los_Angeles",
+  "LanguageCode": "en",
+  "ConnectedStripeAccountId": "acct_1HZeTSA2iPBAZb8n",
+  "BusinessName": "",
+  "BusinessType": "Teaching",
+  "CustomBusinessType": "",
+  "Certification": "",
+  "Occupation": "Somewhere"
+}
+{
+  "_id": "600e872e0c23e97effaaa0bf",
+  "CreateTime": {
+    "$date": "2021-01-25T08:54:06.888Z"
+  },
+  "UpdateTime": {
+    "$date": "2021-01-25T15:50:49.045Z"
+  },
+  "AccountId": "600e87130c23e97effaaa0bc",
+  "FirstName": "api",
+  "LastName": "test",
+  "HasAgreedToTerms": true,
+  "IsCohealer": true,
+  "BirthDate": {
+    "$date": "1990-12-12T00:00:00Z"
+  },
+  "TimeZoneId": "Canada/Yukon",
+  "LanguageCode": "en",
+  "ConnectedStripeAccountId": "acct_1IDQpl2H1tFJSTDk",
+  "BusinessName": "1212",
+  "BusinessType": "Teaching",
+  "CustomBusinessType": "",
+  "Certification": "12",
+  "Occupation": "123",
+  "TransfersEnabled": true,
+  "FirstContributionGuideSent": true,
+  "IsFirstAcceptedCourseExists": true
+}
+{
+  "_id": "600e87e10c23e97effaaa0eb",
+  "CreateTime": {
+    "$date": "2021-01-25T08:57:05.313Z"
+  },
+  "UpdateTime": {
+    "$date": "2021-01-25T08:57:05.313Z"
+  },
+  "AccountId": "600e87d10c23e97effaaa0e8",
+  "FirstName": "client",
+  "LastName": "client",
+  "HasAgreedToTerms": true,
+  "BirthDate": {
+    "$date": "1990-12-12T00:00:00Z"
+  },
+  "TimeZoneId": "America/Denver",
+  "LanguageCode": "en",
+  "CustomerStripeAccountId": "cus_Ip52nUOZYvb54V"
+}

@@ -1,0 +1,47 @@
+{
+  "title": "api test live course",
+  "categories": [ "Business Coaching" ],
+  "isLive": true,
+  "type": "ContributionCourse",
+  "previewContentUrls": [ null ],
+  "whoIAm": "Bio",
+  "whatWeDo": "What to Expect",
+  "purpose": "The Purpose",
+  "preparation": "How to Prepare",
+  "languageCodes": [ "En" ],
+  "minAge": "18+",
+  "gender": "NoRequirement",
+  "isSpeakingLanguageRequired": false,
+  "invitationOnly": true,
+  "sessions": [
+    {
+      "maxParticipantsNumber": 20,
+      "minParticipantsNumber": 2,
+      "sessionTimes": [
+        {
+          "startTime": "2021-01-27T09:00:00",
+          "endTime": "2021-01-27T10:00:00",
+          "startDate": "2021-01-27T16:51:49",
+          "endDate": "2021-01-28T16:51:49"
+        }
+      ],
+      "title": "Session 1",
+      "name": "Session"
+    }
+  ],
+  "enrollment": {
+    "fromDate": "2021-01-25T00:00:00.000",
+    "toDate": "2021-01-26T23:59:59.999"
+  },
+  "liveVideoServiceProvider": { "providerName": "Cohere" },
+  "paymentInfo": {
+    "cost": 123,
+    "paymentOptions": [ "EntireCourse" ],
+    "splitNumbers": 3,
+    "splitPeriod": "Monthly",
+    "packageSessionDiscountPercentage": null,
+    "packageSessionNumbers": null
+  },
+  "userId": "600e872e0c23e97effaaa0bf",
+  "hasAgreedContributionTerms": true
+}

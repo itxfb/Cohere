@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+#  install:
+#    runtime-versions:
+#      dotnet: 6.0
+  build:
+    commands:
+      - echo Installing .NET 6.0
+      - /usr/local/bin/dotnet-install.sh --channel 6.0
+      - echo Build CohereAPI started on `date`
+      - dotnet publish -c release -o ./build_output Cohere/Cohere.Api/Cohere.Api.csproj
+
+artifacts:
+  files:
+    - build_output/**/*
+    - scripts/**/*
+    - appspec.yml

@@ -1,0 +1,2820 @@
+{
+    "info": {
+        "_postman_id": "bcf7de0e-6b2f-4a6b-9a29-9bc85117ab6f",
+        "name": "ApiNCore",
+        "description": "This is selection of basic API tests",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "IS4  ",
+            "item": [
+                {
+                    "name": "Account",
+                    "item": [
+                        {
+                            "name": "1.GetToken",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "79528e6b-9c51-47eb-a407-db8861076675",
+                                        "exec": [
+                                            "var data = JSON.parse(responseBody);",
+                                            "//is4_token defined in Edit collection - Variable",
+                                            "//in this test populated",
+                                            "postman.clearGlobalVariable(\"is4_token\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"is4_token\", data.access_token); ",
+                                            "pm.globals.set(\"is4_token\", data.access_token);",
+                                            "",
+                                            "console.log(\"is4_token\", data.access_token);",
+                                            "",
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//var data = JSON.parse(responseBody);",
+                                            "//postman.setEnvironmentVariable(\"token\", data.token);",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/x-www-form-urlencoded",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "urlencoded",
+                                    "urlencoded": [
+                                        {
+                                            "key": "grant_type",
+                                            "value": "password",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "username",
+                                            "value": "my@email.com",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "password",
+                                            "value": "mysecretpassword123",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_id",
+                                            "value": "CohereClient",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_secret",
+                                            "value": "secret",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "scope",
+                                            "value": "Cohere",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "http://localhost:5000/connect/token",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "5000",
+                                    "path": [
+                                        "connect",
+                                        "token"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "ce22a602-aabc-497e-ba39-1442e33a1546",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"account_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"account_addedid\", responseBody); ",
+                                            "pm.globals.set(\"account_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);  //must have this to have time for global addedid to propagate",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"Brad Pitt\",\n    \"email\": \"bradpitt@anasoft.net\",\n    \"description\":\"description\",\n    \"isTrial\": true,\n    \"IsActive\": true,\n    \"SetActive\": \"2018-12-01\"\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add async",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "a7e08d8e-d6e0-4d20-b8ea-a3ae298f9922",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"accountasync_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"accountasync_addedid\", responseBody); ",
+                                            "pm.globals.set(\"accountasync_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"Brad Pitt\",\n    \"email\": \"bradpitt@anasoft.net\",\n    \"description\":\"description\",\n    \"isTrial\": true,\n    \"IsActive\": true,\n    \"SetActive\": \"2018-12-01\"\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetAll",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "47ed0a0a-5d36-4aef-abae-9e3e236c2a03",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"verify account counts\",  () => {",
+                                            "    pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "84ceac94-4490-4684-bef1-5eeca0e69f81",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "34354726-bee9-4bb8-ab38-dde36f12f42b",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//does not work",
+                                            "pm.test(\"verify account returned\",  () => {",
+                                            "   // pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account/{{account_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account",
+                                        "{{account_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "f06f11f2-9d84-4c4c-a213-8a4de179c4c1",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//does not work",
+                                            "pm.test(\"verify account returned\",  () => {",
+                                            "  //pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync/{{accountasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync",
+                                        "{{accountasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "d2ca76fc-10df-4ec3-82b9-a58e0454b8de",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify account updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": " {\n        \"id\": {{account_addedid}},\n        \"name\": \"Brad Pitt - update3\",\n        \"email\": \"email3@anasoft.net\",\n        \"description\": \"updated\",\n        \"isTrial\": true,\n        \"isActive\": true,\n        \"setActive\": \"2018-12-01T00:00:00\"\n    }"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account/{{account_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account",
+                                        "{{account_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "d0afe353-c00b-4f0e-830c-9d068f19fe02",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify account updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": " {\n        \"id\": {{accountasync_addedid}},\n        \"name\": \"Brad Pitt - update3\",\n        \"email\": \"email3@anasoft.net\",\n        \"description\": \"updated\",\n        \"isTrial\": true,\n        \"isActive\": true,\n        \"setActive\": \"2018-12-01T00:00:00\"\n    }"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync/{{accountasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync",
+                                        "{{accountasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "31384209-6078-4f65-90b1-f01a36ed0655",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account/{{account_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account",
+                                        "{{account_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "e7d0eca3-b385-40c8-9dec-6d3eb17bd220",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync/{{accountasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync",
+                                        "{{accountasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "_postman_isSubFolder": true
+                },
+                {
+                    "name": "User",
+                    "item": [
+                        {
+                            "name": "1.GetToken",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "79528e6b-9c51-47eb-a407-db8861076675",
+                                        "exec": [
+                                            "var data = JSON.parse(responseBody);",
+                                            "//is4_token defined in Edit collection - Variable",
+                                            "//in this test populated",
+                                            "postman.clearGlobalVariable(\"is4_token\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"is4_token\", data.access_token); ",
+                                            "pm.globals.set(\"is4_token\", data.access_token);",
+                                            "",
+                                            "console.log(\"is4_token\", data.access_token);",
+                                            "",
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//var data = JSON.parse(responseBody);",
+                                            "//postman.setEnvironmentVariable(\"token\", data.token);",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/x-www-form-urlencoded",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "urlencoded",
+                                    "urlencoded": [
+                                        {
+                                            "key": "grant_type",
+                                            "value": "password",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "username",
+                                            "value": "my@email.com",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "password",
+                                            "value": "mysecretpassword123",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_id",
+                                            "value": "CohereClient",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_secret",
+                                            "value": "secret",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "scope",
+                                            "value": "Cohere",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "http://localhost:5000/connect/token",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "5000",
+                                    "path": [
+                                        "connect",
+                                        "token"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "2c044953-195e-4f0c-b04b-98ae140f7d1f",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"user_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"user_addedid\", responseBody); ",
+                                            "pm.globals.set(\"user_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);  //must have this to have time for global addedid to propagate",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"description\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add async",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "f97e586d-69cb-49ce-9c57-bfcedc1ee0ca",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"userasync_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"userasync_addedid\", responseBody); ",
+                                            "pm.globals.set(\"userasync_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);  //must have this to have time for global addedid to propagate",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"description\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetAll",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "47ed0a0a-5d36-4aef-abae-9e3e236c2a03",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"verify account counts\",  () => {",
+                                            "    pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "84ceac94-4490-4684-bef1-5eeca0e69f81",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetAll async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "67dac4cb-99e7-4cae-851a-035b07a0b902",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"verify account counts\",  () => {",
+                                            "    pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "09754b14-90e7-4176-8d65-b589abd85002",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//",
+                                            "pm.test(\"verify user returned\",  () => {",
+                                            "   pm.expect(pm.response.json().id).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user/{{user_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user",
+                                        "{{user_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "8a9f682a-da02-44b6-b54b-8468f2da139f",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//",
+                                            "pm.test(\"verify user returned\",  () => {",
+                                            "   pm.expect(pm.response.json().id).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync/{{userasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync",
+                                        "{{userasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "d8f43312-caa9-412e-b3d5-cc0b5e46c476",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify user updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"id\":{{user_addedid}},\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"updated\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user/{{user_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user",
+                                        "{{user_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "44d857ee-f00d-4441-8947-59d8bd4d6db7",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify user updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"id\":{{userasync_addedid}},\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"updated\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync/{{userasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync",
+                                        "{{userasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "e7d0eca3-b385-40c8-9dec-6d3eb17bd220",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user/{{user_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user",
+                                        "{{user_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "e7d0eca3-b385-40c8-9dec-6d3eb17bd220",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{is4_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync/{{userasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync",
+                                        "{{userasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "_postman_isSubFolder": true
+                }
+            ],
+            "description": "IndentityServer4 Authentication\n\nNOTE: Before running tests run IndentityServer and set \"UseIndentityServer4\": true in Api's appsettings.json and run Api server",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "id": "1c47a7ce-fa9f-4187-9261-f9bf6f206e2c",
+                        "type": "text/javascript",
+                        "exec": [
+                            ""
+                        ]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "7a16b529-1e78-444e-932f-14c05772d129",
+                        "type": "text/javascript",
+                        "exec": [
+                            ""
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "JWT",
+            "item": [
+                {
+                    "name": "Account",
+                    "item": [
+                        {
+                            "name": "1.GetToken",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "41c03b18-dcc3-4f79-a242-d6e33d86375e",
+                                        "exec": [
+                                            "",
+                                            "var data = JSON.parse(responseBody);",
+                                            "//jwt_token defined in Edit collection - Variable",
+                                            "//in this test populated",
+                                            "postman.clearGlobalVariable(\"jwt_token\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"jwt_token\", data.token); ",
+                                            "pm.globals.set(\"jwt_token\", data.token);",
+                                            "",
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//var data = JSON.parse(responseBody);",
+                                            "//postman.setEnvironmentVariable(\"token\", data.token);"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "e493431d-3367-488f-aea5-7ff6c99f4f35",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\"UserName\": \"my@email.com\",\n\"Password\": \"mysecretpassword123\"\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/token",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "token"
+                                    ]
+                                },
+                                "description": "This test must be executed the first to get token value for other tests"
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "ce22a602-aabc-497e-ba39-1442e33a1546",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"account_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"account_addedid\", responseBody); ",
+                                            "pm.globals.set(\"account_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);  //must have this to have time for global addedid to propagate",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"Brad Pitt\",\n    \"email\": \"bradpitt@anasoft.net\",\n    \"description\":\"description\",\n    \"isTrial\": true,\n    \"IsActive\": true,\n    \"SetActive\": \"2018-12-01\"\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add async",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "a7e08d8e-d6e0-4d20-b8ea-a3ae298f9922",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"accountasync_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"accountasync_addedid\", responseBody); ",
+                                            "pm.globals.set(\"accountasync_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"Brad Pitt\",\n    \"email\": \"bradpitt@anasoft.net\",\n    \"description\":\"description\",\n    \"isTrial\": true,\n    \"IsActive\": true,\n    \"SetActive\": \"2018-12-01\"\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetAll",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "47ed0a0a-5d36-4aef-abae-9e3e236c2a03",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"verify account counts\",  () => {",
+                                            "    pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "84ceac94-4490-4684-bef1-5eeca0e69f81",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetAll async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "67dac4cb-99e7-4cae-851a-035b07a0b902",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"verify account counts\",  () => {",
+                                            "    pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "34354726-bee9-4bb8-ab38-dde36f12f42b",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//does not work",
+                                            "pm.test(\"verify account returned\",  () => {",
+                                            "   // pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account/{{account_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account",
+                                        "{{account_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "f06f11f2-9d84-4c4c-a213-8a4de179c4c1",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//does not work",
+                                            "pm.test(\"verify account returned\",  () => {",
+                                            "  //pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync/{{accountasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync",
+                                        "{{accountasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "d2ca76fc-10df-4ec3-82b9-a58e0454b8de",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify account updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": " {\n        \"id\": {{account_addedid}},\n        \"name\": \"Brad Pitt - update3\",\n        \"email\": \"email3@anasoft.net\",\n        \"description\": \"updated\",\n        \"isTrial\": true,\n        \"isActive\": true,\n        \"setActive\": \"2018-12-01T00:00:00\"\n    }"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account/{{account_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account",
+                                        "{{account_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "d0afe353-c00b-4f0e-830c-9d068f19fe02",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify account updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": " {\n        \"id\": {{accountasync_addedid}},\n        \"name\": \"Brad Pitt - update3\",\n        \"email\": \"email3@anasoft.net\",\n        \"description\": \"updated\",\n        \"isTrial\": true,\n        \"isActive\": true,\n        \"setActive\": \"2018-12-01T00:00:00\"\n    }"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync/{{accountasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync",
+                                        "{{accountasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "31384209-6078-4f65-90b1-f01a36ed0655",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/account/{{account_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "account",
+                                        "{{account_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "e7d0eca3-b385-40c8-9dec-6d3eb17bd220",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/accountasync/{{accountasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "accountasync",
+                                        "{{accountasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "_postman_isSubFolder": true
+                },
+                {
+                    "name": "User",
+                    "item": [
+                        {
+                            "name": "1.GetToken",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "41c03b18-dcc3-4f79-a242-d6e33d86375e",
+                                        "exec": [
+                                            "",
+                                            "var data = JSON.parse(responseBody);",
+                                            "//jwt_token defined in Edit collection - Variable",
+                                            "//in this test populated",
+                                            "postman.clearGlobalVariable(\"jwt_token\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"jwt_token\", data.token); ",
+                                            "pm.globals.set(\"jwt_token\", data.token);",
+                                            "",
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//var data = JSON.parse(responseBody);",
+                                            "//postman.setEnvironmentVariable(\"token\", data.token);"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "e493431d-3367-488f-aea5-7ff6c99f4f35",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\"UserName\": \"my@email.com\",\n\"Password\": \"mysecretpassword123\"\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/token",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "token"
+                                    ]
+                                },
+                                "description": "This test must be executed the first to get token value for other tests"
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "2c044953-195e-4f0c-b04b-98ae140f7d1f",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"user_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"user_addedid\", responseBody); ",
+                                            "pm.globals.set(\"user_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);  //must have this to have time for global addedid to propagate",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"description\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Add async",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "221df8e7-4e36-464d-8715-c5e6c1384910",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "f97e586d-69cb-49ce-9c57-bfcedc1ee0ca",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(201);",
+                                            "});",
+                                            "",
+                                            "postman.clearGlobalVariable(\"userasync_addedid\");  ",
+                                            "//populate token variable",
+                                            "postman.setGlobalVariable(\"userasync_addedid\", responseBody); ",
+                                            "pm.globals.set(\"userasync_addedid\", responseBody);",
+                                            "setTimeout(function(){}, 500);  //must have this to have time for global addedid to propagate",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "",
+                                        "value": "",
+                                        "disabled": true
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"description\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetAll",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "47ed0a0a-5d36-4aef-abae-9e3e236c2a03",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"verify account counts\",  () => {",
+                                            "    pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "id": "84ceac94-4490-4684-bef1-5eeca0e69f81",
+                                        "exec": [
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetAll async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "67dac4cb-99e7-4cae-851a-035b07a0b902",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"verify account counts\",  () => {",
+                                            "    pm.expect(pm.response.json().length).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "09754b14-90e7-4176-8d65-b589abd85002",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//",
+                                            "pm.test(\"verify user returned\",  () => {",
+                                            "   pm.expect(pm.response.json().id).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user/{{user_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user",
+                                        "{{user_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "GetById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "8a9f682a-da02-44b6-b54b-8468f2da139f",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(200);",
+                                            "});",
+                                            "",
+                                            "//",
+                                            "pm.test(\"verify user returned\",  () => {",
+                                            "   pm.expect(pm.response.json().id).to.be.above(0);",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync/{{userasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync",
+                                        "{{userasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "d8f43312-caa9-412e-b3d5-cc0b5e46c476",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify user updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"id\":{{user_addedid}},\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"updated\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user/{{user_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user",
+                                        "{{user_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UpdateById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "44d857ee-f00d-4441-8947-59d8bd4d6db7",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(202);",
+                                            "});",
+                                            "",
+                                            "//updated",
+                                            "pm.test(\"verify user updated\",  () => {",
+                                            "   pm.expect(pm.response.json().description).to.be.equal(\"updated\");",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"id\":{{userasync_addedid}},\n    \"FirstName\": \"Brad\",\n    \"LastName\": \"Pitt\",\n    \"UserName\": \"my1@email.com\",\n    \"Email\":\"bradpitt@anasoft.net\",\n    \"Description\": \"updated\",\n    \"IsAdminRole\": true,\n    \"IsActive\": true,\n    \"Password\": \"mysecretpassword123\",\n    \"AccountId\": 1\n}"
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync/{{userasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync",
+                                        "{{userasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "e7d0eca3-b385-40c8-9dec-6d3eb17bd220",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            "",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/user/{{user_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "user",
+                                        "{{user_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "DeleteById async",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "id": "e7d0eca3-b385-40c8-9dec-6d3eb17bd220",
+                                        "exec": [
+                                            "// example using pm.response.to.have",
+                                            "pm.test(\"response is ok\", function () {",
+                                            "    pm.response.to.have.status(204);",
+                                            "});",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt_token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": ""
+                                },
+                                "url": {
+                                    "raw": "http://localhost:44341/api/userasync/{{userasync_addedid}}",
+                                    "protocol": "http",
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "port": "44341",
+                                    "path": [
+                                        "api",
+                                        "userasync",
+                                        "{{userasync_addedid}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "id": "017c1497-4de2-483d-b034-6069b8565a9f",
+                                "type": "text/javascript",
+                                "exec": [
+                                    ""
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "1e8fe73d-d426-4232-968e-90ecf44a71ca",
+                                "type": "text/javascript",
+                                "exec": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ],
+                    "_postman_isSubFolder": true
+                }
+            ],
+            "description": "JWT Authentication\n\nNOTE: Set \"UseIndentityServer4\": false in Api's appsettings.json and run API server\n",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "id": "4094f08b-55fb-42e2-9c48-9573966b4aaf",
+                        "type": "text/javascript",
+                        "exec": [
+                            ""
+                        ]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "8466e275-6b36-4d67-b21a-081033a4914a",
+                        "type": "text/javascript",
+                        "exec": [
+                            ""
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "id": "802e320e-97b0-4af7-bc78-c468561e7df9",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "id": "c16740b6-9152-4eee-9b4a-4f52178c813d",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="My rules" Description=" dfgdf" ToolsVersion="16.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA0001" Action="None" /> <!-- XML comment analysis is disabled due to project configuration -->
+	<Rule Id="SA1005" Action="Error" />
+	<Rule Id="SA1400" Action="None" />
+	<Rule Id="SA1200" Action="None" />
+	<Rule Id="SA1201" Action="None" /> <!-- A constructor should not follow a property -->
+	<Rule Id="SA1633" Action="None" />
+	<Rule Id="SA1413" Action="None" />
+	<Rule Id="SA1600" Action="None" />
+	<Rule Id="SA1123" Action="None" /> <!-- Region should not be located within a code element -->
+	<Rule Id="SA1309" Action="None" /> <!-- Field 'field' should not begin with an underscore -->
+	<Rule Id="SA1208" Action="None" /> <!-- Example: Using directive for 'System' should appear before directive for 'Microsoft.AspNetCore.Mvc' -->
+	<Rule Id="SA1602" Action="None" /> <!-- Enumeration items should be documented -->
+	<Rule Id="SA1629" Action="None" /> <!-- Documentation text should end with a period -->
+	<Rule Id="SA1601" Action="None" /> <!-- Partial elements should be documented -->
+
+
+
+  </Rules>
+</RuleSet>

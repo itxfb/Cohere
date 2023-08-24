@@ -1,0 +1,24 @@
+[
+    {
+        "ClientId": "clientAPI1",
+        "AllowedGrantTypes": [ "client_credentials" ],
+        "ClientSecrets": [
+            {
+                "Value": "Cohere-secret",
+                "Description": "Cohere secret"
+            }
+        ],
+        "AllowedScopes": [ "Cohere" ]
+    },
+    {
+        "ClientId": "CohereClient",
+        "AllowedGrantTypes": [ "password" ],
+        "ClientSecrets": [
+            {
+                "Value": "Cohere-secret",
+                "Description": "Cohere secret"
+            }
+        ],
+        "AllowedScopes": [ "Cohere" ]
+    }
+]

@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html>
+<head>
+</head>
+<body style="
+		font: 12px Tahoma, sans-serif;
+		background-color: #e5e5e5;
+		display: flex;
+		height: auto;
+		align-items: center;
+		position: relative;
+		flex-direction: column;">
+    <table>
+        <tr>
+            <td align="center" style="background-color: #ffffff;">
+                <div style="
+					padding-top: 50px;
+					padding-bottom: 50px;">
+                    <img height="128" src="https://sun9-69.userapi.com/c857424/v857424652/1bd30e/MsjbeR7HUEU.jpg">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #ffffff;">
+                <div style="padding: 50px;
+					background-color: #0b6481;
+					color: transparent">
+                    <h1 style="font-family: Roboto, sans-serif;
+						color: #ffffff;
+						font-size: 45px;
+						line-height: 45px;
+						text-align: center">
+                        {customerName}'s paid tier plan expiring soon<br>
+                    </h1>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #ffffff;">
+                <div style="padding: 50px;">
+                    <h3 style="font-family: Roboto, sans-serif;
+						text-align: justify;
+						color: #5c5c5c;
+						font-size: 16px;
+						font-weight:300;
+						line-height: 26px;">
+                        <b>{customerName} <a href="mailto:{cohealerEmail}">{customerEmail}</a></b> has cancelled his active paid tier account on cohere at <b>{cancellationDate}</b> UTC
+                        and his membership is goint to expire at <b>{expireDate}</b>
+                        <br>
+                    </h3>
+                    <h3 style="font-family: Roboto, sans-serif;
+						text-align: justify;
+						color: #5c5c5c;
+						font-size: 16px;
+						font-weight:300;
+						line-height: 26px;">
+                        Thank you,<br>
+                        The Cohere Team
+                    </h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td>
+                <p style="font-family: Roboto, sans-serif; color: #5c5c5c; font-size: 12px; line-height: 24px; text-align: center;">
+                    <a style="font: inherit; color: inherit; text-decoration: none;" href="{unsubscribeEmailLink}">Unsubscribe</a>
+                    |
+                    <a style="font: inherit; color: inherit; text-decoration: none;" href="mailto:support@cohere.live">Contact Support</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

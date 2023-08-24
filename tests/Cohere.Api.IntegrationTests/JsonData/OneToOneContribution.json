@@ -1,0 +1,83 @@
+{
+  "title": "api test",
+  "categories": [ "Business Coaching" ],
+  "isLive": true,
+  "type": "ContributionOneToOne",
+  "previewContentUrls": [ null ],
+  "whoIAm": "Bio",
+  "whatWeDo": "What to Expect",
+  "purpose": "The Purpose",
+  "preparation": "How to Prepare",
+  "languageCodes": [ "En" ],
+  "minAge": "18+",
+  "gender": "NoRequirement",
+  "isSpeakingLanguageRequired": false,
+  "invitationOnly": true,
+  "liveVideoServiceProvider": { "providerName": "Cohere" },
+  "sessions": [
+    {
+      "durations": [ 60 ],
+      "maxParticipantsNumber": 1,
+      "minParticipantsNumber": 1,
+      "sessionTimes": [
+        {
+          "startTime": "2021-01-26T09:00:00",
+          "endTime": "2021-01-27T10:00:00",
+          "startDate": "2021-01-26T14:11:23",
+          "endDate": "2021-01-27T14:11:23"
+        }
+      ],
+      "name": "1:1 Session"
+    }
+  ],
+  "availabilityTimes": [],
+  "durations": [ 60 ],
+  "oneToOneSessionDataUi": {
+    "startDay": "2021-01-25T11:11:23.718Z",
+    "endDay": "2021-03-26T11:11:23.719Z",
+    "duration": "60",
+    "sessionDuration": 60,
+    "selectedWeeks": [
+      {
+        "days": [
+          {
+            "title": "M",
+            "value": "Mon"
+          },
+          {
+            "title": "T",
+            "value": "Tue"
+          },
+          {
+            "title": "W",
+            "value": "Wed"
+          },
+          {
+            "title": "Th",
+            "value": "Thu"
+          },
+          {
+            "title": "F",
+            "value": "Fri"
+          }
+        ],
+        "endTime": "2021-01-13T17:00:00.000Z",
+        "startTime": "2021-01-13T09:00:00.000Z"
+      }
+    ]
+  },
+  "availabilityTimesForUi": [
+    {
+      "startTime": "2021-01-26T09:00:00",
+      "endTime": "2021-01-27T10:00:00"
+    }
+  ],
+  "paymentInfo": {
+    "cost": 123,
+    "paymentOptions": [ "PerSession" ],
+    "packageSessionDiscountPercentage": null,
+    "packageSessionNumbers": null
+  },
+  "userId": "600e872e0c23e97effaaa0bf",
+  "hasAgreedContributionTerms": true
+}

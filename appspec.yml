@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: ./build_output
+    destination: /home/ubuntu/Cohere
+
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_services.sh
+      timeout: 300
+      runas: root 
+
+  BeforeInstall:
+    - location: scripts/remove_application.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    - location: scripts/start_services.sh
+      timeout: 300
+      runas: root
